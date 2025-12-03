@@ -1,0 +1,281 @@
+/* Reset e Estilos Globais */
+:root {
+    --primary-color: #91AFC3; /* Azul mais escuro */
+    --primary-color-dark: #7a95a8; /* Azul mais escuro (hover) */
+    --secondary-color: #A1856C; /* Marrom/Taupe */
+    --light-color: #E3D0B9;   /* Bege/Tan claro */
+    --dark-color: #4a4440;    /* Marrom escuro para texto */
+    --white-color: #ffffff;
+    --hero-gradient-start: #B3C9E2; /* Azul claro suave para gradiente */
+    --font-family: 'Segoe UI',-apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --border-radius: 12px;
+    --shadow: 0 10px 20px rgba(0,0,0,0.1);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    transition: var(--transition);
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+h1, h2, h3 {
+    color: var(--primary-color-dark);
+    font-weight: 700;
+}
+
+a {
+    color: var(--primary-color-dark);
+    text-decoration: none;
+    position: relative;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color-dark);
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 2rem;
+}
+
+/* Header e Navegação */
+header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    position: relative; /* Needed for absolute positioning of ul */
+}
+
+nav .logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color-dark);
+}
+
+nav .logo img {
+    height: 90px; /* Make it even larger */
+    vertical-align: middle;
+}
+
+nav ul {
+    position: absolute; /* Take out of flow to position freely */
+    right: 2rem; /* Align to the right of the nav */
+    top: 50%; /* Vertically center */
+    transform: translateY(-50%); /* Adjust for perfect vertical centering */
+    display: flex; /* Maintain flex for list items */
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+}
+
+section {
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white-color);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.btn:hover {
+    background: var(--primary-color-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0,0,0,0.5);
+}
+
+/* Seção Hero */
+#hero {
+    background: linear-gradient(to right, var(--hero-gradient-start), var(--light-color));
+    text-align: center;
+    padding: 5rem 2rem;
+    border-radius: var(--border-radius);
+    margin: 2rem;
+}
+
+#hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    color: var(--dark-color);
+}
+
+/* Seção de Serviços e Cards */
+#services .service-cards, #results-gallery .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.card, .result-card {
+    background: var(--white-color);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+
+.card:hover, .result-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.result-card .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+/* Estilos para Imagens */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+/* Seção de Contato */
+.contact-container {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    background: var(--white-color);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+#contact-form, #contact-image {
+    flex: 1;
+}
+
+/* Formulário de Contato */
+#contact-form form {
+    max-width: 100%;
+    margin: 0;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid #e9eff4;
+    border-radius: var(--border-radius);
+    background-color: #f1f3f5;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: var(--white-color);
+}
+
+/* Footer */
+footer {
+    background: var(--dark-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .contact-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0.8rem 0;
+    }
+
+    #hero h1 {
+        font-size: 2.8rem;
+    }
+}
